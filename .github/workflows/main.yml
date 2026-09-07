@@ -19,6 +19,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Create web assets directory
+        run: |
+          if [ ! -d "www" ]; then
+            mkdir -p www
+            echo "<!DOCTYPE html><html><head><title>Hesab App</title></head><body><h1>Hesab App</h1></body></html>" > www/index.html
+          fi
+
       - name: Add Android platform
         run: npx cap add android
 
